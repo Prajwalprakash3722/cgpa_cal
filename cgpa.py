@@ -147,8 +147,10 @@ def regex_validation():
     name = st.text_input("Enter Your name: ")
     email = st.text_input("Enter your college-email: ")
     verified_email = re.search("20@rvce.edu.in", email)
-    if verified_email:
-        st.markdown("You are verified")
-        cgpa()
-
+    if st.button("Enter"):
+        if verified_email:
+            st.markdown("You are verified")
+            cgpa()
+        else:
+            st.write("Enter your correct email address....")
 regex_validation()
