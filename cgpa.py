@@ -3,11 +3,13 @@
 # Author: Prajwal Prakash
 # Date: 02/03/2021
 # Goal: To calculate the approximate and provisional SGPA.
+# licensed under MIT 
+# If you want to build the same app for your college feel free to fork it from my repo and make the necessary changes, But attriubution 
+# to the handle @Prajwalprakash3722 in GitHub.
 ###################################################################################################################################################################
 import streamlit as st
 import pandas as pd
 from PIL import Image as im
-import regex as re
 
 logo = im.open("rvce.png")
 st.image(logo)
@@ -122,6 +124,7 @@ def cgpa():
             sub = subject
 
     st.title("CIE Marks")
+    st.write("Imp-Point:\n The Experiential marks are assumed to be 18 in each subject")
     st.write("For", sub)
     cie_1 = int(st.number_input("Enter the 1st internal marks: "))
     quiz_1 = st.number_input("Enter the 1st Quiz marks: ")
@@ -142,15 +145,5 @@ def cgpa():
             st.image('/home/prajwal/projects/cgpa_cal/congo.png')
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
-
-def regex_validation():
-    name = st.text_input("Enter Your name: ")
-    email = st.text_input("Enter your college-email: ")
-    verified_email = re.search("20@rvce.edu.in", email)
-    if st.button("Enter"):
-        if verified_email:
-            st.markdown("You are verified")
-            cgpa()
-        else:
-            st.write("Enter your correct email address....")
-regex_validation()
+            st.write("Total Quiz marks in", sub, "is: ", quiz_total)
+cgpa()
