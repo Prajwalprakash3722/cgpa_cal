@@ -1,7 +1,15 @@
+
+####################################################################################################################################################################
+# Author: Prajwal Prakash
+# Date: 02/03/2021
+# Goal: To calculate the approximate and provisional SGPA.
+# licensed under MIT
+# If you want to build the same app for your college feel free to fork it from my repo and make the necessary changes, But attriubution
+# to the handle @Prajwalprakash3722 in GitHub.
+###################################################################################################################################################################
 import streamlit as st
 import pandas as pd
 from PIL import Image as im
-
 
 logo = im.open("rvce.png")
 st.image(logo)
@@ -9,154 +17,147 @@ st.title("RV College Of Engineering cgpa calculator: (Beta stage) ")
 st.write("Only for First Year Students")
 st.markdown(
     "This platform is developed and deployed by **Prajwal Prakash, CSE department'24**")
-cycle = st.radio(
-    "Select the cycle in which you are in ?",
-    ('P-cycle', 'C-cycle'))
-if cycle == 'P-cycle':
-    st.write('You selected P-cycle.')
-else:
-    st.write("You selected C-cycle.")
-sem = st.selectbox("Select the sem  that you are in: ",
-                   ("1st Sem", "2nd Sem"))
-branch = st.selectbox(
-    "Select the branch that you are in ?",
-    ('Biotechnology',
 
-     'Chemical Engineering',
 
-     'Civil Engineering',
+def cgpa():
 
-     'Computer Science & Engineering',
-
-     'Electrical & Electronics',
-
-     'Electronics & Communication',
-
-     'Instrumentation Technology',
-
-     'Industrial Engineering & Management',
-
-     'Information Science & Engineering',
-
-     'Mechanical Engineering',
-
-     'Telecommunication Engineering'))
-
-if cycle == 'C-cycle':
-    st.write("You have 6 Subjects. ")
-    if sem == '1st Sem':
-        sub = st.radio("Select the Subject which you want the grade to be calculated ?",
-                       ('Engineering Mathematics 18MA11',
-
-                        'Engineering Chemistry 18CH12',
-
-                        'Programming in C 18CS13',
-
-                        'Elements of Electronics 18EC14',
-
-                        'Elements of Mechanical Engineering 18ME15',
-
-                        'English Lab 18HS16'))
+    cycle = st.radio(
+        "Select the cycle in which you are in ?",
+        ('P-cycle', 'C-cycle'))
+    if cycle == 'P-cycle':
+        st.write('You selected P-cycle.')
     else:
-        sub = st.radio("Select the Subject which you want the grade to be calculated ?",
-                       ('Engineering Mathematics 18MA21',
+        st.write("You selected C-cycle.")
+    sem = st.selectbox("Select the sem  that you are in: ",
+                       ("1st Sem", "2nd Sem"))
+    branch = st.selectbox(
+        "Select the branch that you are in ?",
+        ('Biotechnology',
 
-                        'Engineering Chemistry 18CH22',
+         'Chemical Engineering',
 
-                        'Programming in C 18CS23',
+         'Civil Engineering',
 
-                        'Elements of Electronics 18EC24',
+         'Computer Science & Engineering',
 
-                        'Elements of Mechanical Engineering 18ME25',
+         'Electrical & Electronics',
 
-                        'English Lab 18HS26'))
+         'Electronics & Communication',
 
-else:
-    st.write("You have 7 Subjects. ")
-    if sem == '1st Sem':
-        subject = st.radio("Select the Subject which you want the grade to be calculated ?",
-                           ("Engineering Mathematics 18MA11",
+         'Instrumentation Technology',
 
-                            "Engineering Physics 18PH12",
+         'Industrial Engineering & Management',
 
-                            "Elements of Electrical Engineering 18EE13",
-                            "0",))
-        subject2 = st.radio("",
-                            ("Elements of Engineering Practices 18EE15",
+         'Information Science & Engineering',
 
-                             "Computer Aided Engineering Drawing 18ME16",
+         'Mechanical Engineering',
 
-                             "English Lab 18HS17",
+         'Telecommunication Engineering'))
 
-                             "Elements of Civil Engineering and Mechanics 18CV14"))
+    if cycle == 'C-cycle':
+        st.write("You have 6 Subjects. ")
+        if sem == '1st Sem':
+            sub = st.radio("Select the Subject which you want the grade to be calculated ?",
+                           ('Engineering Mathematics 18MA11',
+
+                            'Engineering Chemistry 18CH12',
+
+                            'Programming in C 18CS13',
+
+                            'Elements of Electronics 18EC14',
+
+                            'Elements of Mechanical Engineering 18ME15',
+
+                            'English Lab 18HS16'))
+        else:
+            sub = st.radio("Select the Subject which you want the grade to be calculated ?",
+                           ('Engineering Mathematics 18MA21',
+
+                            'Engineering Chemistry 18CH22',
+
+                            'Programming in C 18CS23',
+
+                            'Elements of Electronics Engineering 18EC24',
+
+                            'Elements of Mechanical Engineering 18ME25',
+
+                            'English Lab 18HS26'))
 
     else:
-        subject = st.radio("Select the Subject which you want the grade to be calculated ?",
-                           ("Engineering Mathematics 18MA21",
+        st.write("You have 7 Subjects. ")
+        if sem == '1st Sem':
+            subject = st.radio("Select the Subject which you want the grade to be calculated ?",
+                               ("Engineering Mathematics 18MA11",
 
-                            "Engineering Physics 18PH22",
+                                "Engineering Physics 18PH12",
 
-                            "Elements of Electrical Engineering 18EE23",
-                            "0",))
-        subject2 = st.radio("",
-                            ("Elements of Engineering Practices 18EE25",
+                                "Elements of Electrical Engineering 18EE13",
+                                "0",))
+            subject2 = st.radio("",
+                                ("Elements of Engineering Practices 18EE15",
 
-                             "Computer Aided Engineering Drawing 18ME26",
+                                 "Computer Aided Engineering Drawing 18ME16",
 
-                             "English Lab 18HS27",
+                                 "English Lab 18HS17",
 
-                             "Elements of Civil Engineering and Mechanics 18CV24"))
+                                 "Elements of Civil Engineering and Mechanics 18CV14"))
 
-    if subject == "0":
-        sub = subject2
-    else:
-        sub = subject
+        else:
+            subject = st.radio("Select the Subject which you want the grade to be calculated ?",
+                               ("Engineering Mathematics 18MA21",
 
-st.title("CIE Marks")
-st.write("For", sub)
-cie_1 = int(st.number_input("Enter the 1st internal marks: "))
-if cie_1 > 50:
-    st.write("Enter correct marks of CIE-1.")
-cie_2 = int(st.number_input("Enter the 2nd internal marks: "))
-if cie_2 > 50:
-    st.write("Enter correct marks of CIE-2.")
-cie_3 = st.number_input("Enter the 3rd internal marks: ")
-if cie_3 > 50:
-    int(st.write("Enter correct marks of CIE-3."))
-if st.button("Calculate"):
-    cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
-    if cie_1 and cie_2 and cie_3 > 21:
-        st.image('/home/prajwal/projects/cgpa_calc/congo.png')
-        st.write("Congratulations You have passed in ", sub)
-        st.write("Total Average Internal Marks : ", cie_avg)
-st.title("SEE Marks")
-see_marks = int(st.number_input("Enter the External examination marks: "))
-if see_marks > 100:
-    st.write("Enter correct marks of SEE.")
-    date = st.date_input("Enter the date: ")
-cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
-if see_marks >= 90 and (cie_avg > 21):
-    grade = 10
-elif see_marks >= 80 and (cie_avg > 21):
-    grade = 9
-elif see_marks >= 70 and (cie_avg > 21):
-    grade = 8
-elif see_marks >= 60 and (cie_avg > 21):
-    grade = 7
-elif see_marks >= 50 and (cie_avg > 21):
-    grade = 6
-elif see_marks >= 50 and (cie_avg > 21):
-    grade = 5
-else:
-    grade = "F"
+                                "Engineering Physics 18PH22",
 
-if st.button("submit"):
-    st.write("You have been awarded", grade, "grades")
+                                "Elements of Electrical Engineering 18EE23",
+                                "0", "If your subject "))
+            subject2 = st.radio("",
+                                ("Elements of Engineering Practices 18EE25",
 
-if st.button("CIE-report"):
-    df = [cie_1, cie_2, cie_3, cie_avg]
-    st.bar_chart(df, width=0, height=0)
-if st.button("Do You want to rate this Service ? "):
-    rate = int(
-        st.select_slider('How do You rate this service', options=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']))
-    rate += rate
+                                 "Computer Aided Engineering Drawing 18ME26",
+
+                                 "English Lab 18HS27",
+
+                                 "Elements of Civil Engineering and Mechanics 18CV24"))
+
+        if subject == "0":
+            sub = subject2
+        else:
+            sub = subject
+
+    st.title("CIE Marks")
+    st.write(
+        "Imp-Point:\n The Experiential marks are assumed to be 18 in each subject")
+    st.write("For", sub)
+    cie_1 = int(st.number_input("Enter the 1st internal marks: "))
+    quiz_1 = st.number_input("Enter the 1st Quiz marks: ")
+    if cie_1 > 50 or quiz_1 > 10:
+        st.write("Enter correct marks of CIE-1.")
+    cie_2 = int(st.number_input("Enter the 2nd internal marks: "))
+    quiz_2 = st.number_input("Enter the 2nd Quiz marks: ")
+    if cie_2 > 50 or quiz_2 > 10:
+        st.write("Enter correct marks of CIE-2.")
+    cie_3 = st.number_input("Enter the 3rd internal marks: ")
+    quiz_3 = st.number_input("Enter the 3rd Quiz marks: ")
+    if cie_3 > 50 or quiz_3 > 10:
+        int(st.write("Enter correct marks of CIE-3."))
+    if st.button("Calculate"):
+        cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
+        quiz_total = quiz_1 + quiz_2 + quiz_3
+        if cie_1 and cie_2 and cie_3 > 21:
+            #st.image('/congo.png')
+            st.write("Congratulations You have passed in ", sub)
+            st.write("Total Average Internal Marks : ", cie_avg)
+            st.write("Total Quiz marks in", sub, "is: ", quiz_total)
+            total_marks = quiz_total + cie_avg + 18
+            if total_marks > 90:
+                grades = 'S'
+            elif total_marks > 80 or total_marks < 90:
+                grades = 'A'
+            elif total_marks > 70 or total_marks < 80:
+                grades = 'B'
+            elif total_marks > 60 or total_marks < 70:
+                grades = 'C'
+            st.write("You have been awarded '", grades, "' Grades", ", Total marks: ", total_marks)
+
+
+cgpa()
