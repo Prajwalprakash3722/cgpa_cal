@@ -17,7 +17,6 @@ def app():
     st.write("Only for First Year Students")
     st.markdown(
     "This platform is developed and deployed by **Prajwal Prakash, CSE department'24**")
-
     cycle = st.radio(
         "Select the cycle in which you are in ?",
         ('P-cycle', 'C-cycle'))
@@ -134,7 +133,7 @@ def app():
         cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
         quiz_total = quiz_1 + quiz_2 + quiz_3
         if cie_1 and cie_2 and cie_3 > 21:
-            #st.image('/congo.png')
+            st.image('/congo.png')
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
             st.write("Total Quiz marks in", sub, "is: ", quiz_total)
@@ -149,5 +148,5 @@ def app():
                 grades = 'C'
             st.write("You have been awarded '", grades, "' Grades", ", Total marks: ", total_marks)
         else:
-            st.markdown("Enter Correct marks!!! (Fill all the fields)")
+            st.markdown("Enter Correct marks!!! (Fill all the fields)")    
 app()
