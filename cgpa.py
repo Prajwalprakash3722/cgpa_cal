@@ -1,25 +1,22 @@
-
 ####################################################################################################################################################################
 # Author: Prajwal Prakash
 # Date: 02/03/2021
 # Goal: To calculate the approximate and provisional SGPA.
 # licensed under MIT
 # If you want to build the same app for your college feel free to fork it from my repo and make the necessary changes, But attriubution
-# to the handle @Prajwalprakash3722 in GitHub.
+# to the handle @Prajwalprakash3722 in GitHub is mandaotry
 ###################################################################################################################################################################
 import streamlit as st
 import pandas as pd
 from PIL import Image as im
 
-logo = im.open("rvce.png")
-st.image(logo)
-st.title("RV College Of Engineering cgpa calculator: (Beta stage) ")
-st.write("Only for First Year Students")
-st.markdown(
+def app():
+    logo = im.open("rvce.png")
+    st.image(logo)
+    st.title("RV College Of Engineering cgpa calculator: (Beta stage)")
+    st.write("Only for First Year Students")
+    st.markdown(
     "This platform is developed and deployed by **Prajwal Prakash, CSE department'24**")
-
-
-def cgpa():
 
     cycle = st.radio(
         "Select the cycle in which you are in ?",
@@ -32,7 +29,9 @@ def cgpa():
                        ("1st Sem", "2nd Sem"))
     branch = st.selectbox(
         "Select the branch that you are in ?",
-        ('Biotechnology',
+        ('Aerospace Engineering',
+        
+        'Biotechnology',
 
          'Chemical Engineering',
 
@@ -57,7 +56,7 @@ def cgpa():
     if cycle == 'C-cycle':
         st.write("You have 6 Subjects. ")
         if sem == '1st Sem':
-            sub = st.radio("Select the Subject which you want the grade to be calculated ?",
+            sub = st.selectbox("Select the Subject which you want the grade to be calculated ?",
                            ('Engineering Mathematics 18MA11',
 
                             'Engineering Chemistry 18CH12',
@@ -70,7 +69,7 @@ def cgpa():
 
                             'English Lab 18HS16'))
         else:
-            sub = st.radio("Select the Subject which you want the grade to be calculated ?",
+            sub = st.selectbox("Select the Subject which you want the grade to be calculated ?",
                            ('Engineering Mathematics 18MA21',
 
                             'Engineering Chemistry 18CH22',
@@ -86,15 +85,13 @@ def cgpa():
     else:
         st.write("You have 7 Subjects. ")
         if sem == '1st Sem':
-            subject = st.radio("Select the Subject which you want the grade to be calculated ?",
+            sub = st.selectbox("Select the Subject which you want the grade to be calculated ?",
                                ("Engineering Mathematics 18MA11",
 
                                 "Engineering Physics 18PH12",
 
-                                "Elements of Electrical Engineering 18EE13",
-                                "0",))
-            subject2 = st.radio("",
-                                ("Elements of Engineering Practices 18EE15",
+                                "Elements of Electrical Engineering 18EE13"
+                                "Elements of Engineering Practices 18EE15",
 
                                  "Computer Aided Engineering Drawing 18ME16",
 
@@ -103,26 +100,19 @@ def cgpa():
                                  "Elements of Civil Engineering and Mechanics 18CV14"))
 
         else:
-            subject = st.radio("Select the Subject which you want the grade to be calculated ?",
+            sub = st.selectbox("Select the Subject which you want the grade to be calculated ?",
                                ("Engineering Mathematics 18MA21",
 
                                 "Engineering Physics 18PH22",
 
-                                "Elements of Electrical Engineering 18EE23",
-                                "0", "If your subject "))
-            subject2 = st.radio("",
-                                ("Elements of Engineering Practices 18EE25",
+                                "Elements of Electrical Engineering 18EE23"
+                                "Elements of Engineering Practices 18EE25",
 
                                  "Computer Aided Engineering Drawing 18ME26",
 
                                  "English Lab 18HS27",
 
                                  "Elements of Civil Engineering and Mechanics 18CV24"))
-
-        if subject == "0":
-            sub = subject2
-        else:
-            sub = subject
 
     st.title("CIE Marks")
     st.write(
@@ -158,6 +148,6 @@ def cgpa():
             elif total_marks > 60 or total_marks < 70:
                 grades = 'C'
             st.write("You have been awarded '", grades, "' Grades", ", Total marks: ", total_marks)
-
-
-cgpa()
+        else:
+            st.markdown("Enter Correct marks!!! (Fill all the fields)")
+app()
