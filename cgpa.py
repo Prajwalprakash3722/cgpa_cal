@@ -129,6 +129,11 @@ def app():
     quiz_3 = st.number_input("Enter the 3rd Quiz marks: ")
     if cie_3 > 50 or quiz_3 > 10:
         int(st.write("Enter correct marks of CIE-3."))
+    lab_internals = st.number_input("Enter the lab CIE marks (For maths you can leave it blank): ")
+    if sub == "Engineering Mathematics 18MA11" or "Engineering Mathematics 18MA21":
+        lab_internals_final = 50
+    else:
+        lab_internals_final = lab_internals
     if st.button("Calculate"):
         cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
         quiz_total = quiz_1 + quiz_2 + quiz_3
@@ -136,16 +141,18 @@ def app():
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
             st.write("Total Quiz marks in", sub, "is: ", quiz_total)
-            total_marks = quiz_total + cie_avg + 18
-            if total_marks > 90:
+            total_marks = quiz_total + cie_avg + 18 + lab_internals_final
+            total_marks_final = 0.666666666667*total_marks
+            if total_marks_final > 90:
                 grades = 'S'
-            elif total_marks > 80 or total_marks < 90:
+            elif total_marks_final > 80 or total_marks < 90:
                 grades = 'A'
-            elif total_marks > 70 or total_marks < 80:
+            elif total_marks_final > 70 or total_marks < 80:
                 grades = 'B'
-            elif total_marks > 60 or total_marks < 70:
+            elif total_marks_final > 60 or total_marks < 70:
                 grades = 'C'
-            st.write("You have been awarded '", grades, "' Grades", ", Total marks: ", total_marks)
+            st.write("You have been awarded '", grades, "' Grades", ", Total marks: ", total_marks_final)
         else:
             st.markdown("Enter Correct marks!!! (Fill all the fields)")    
+        
 app()
