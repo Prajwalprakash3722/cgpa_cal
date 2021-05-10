@@ -133,7 +133,6 @@ def app():
         cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
         quiz_total = quiz_1 + quiz_2 + quiz_3
         if cie_1 and cie_2 and cie_3 > 21:
-            st.image('/congo.png')
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
             st.write("Total Quiz marks in", sub, "is: ", quiz_total)
