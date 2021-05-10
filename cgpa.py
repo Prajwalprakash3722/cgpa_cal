@@ -115,7 +115,14 @@ def app():
 
     st.title("CIE Marks")
     st.write(
-        "Imp-Point:\n The Experiential marks are assumed to be 18 in each subject")
+        "Imp-Point:\n The Experiential Learning marks are assumed to be 18 in each subject, If you want to change it click here")
+    el =  st.checkbox("Change Experiential Learning marks")
+    if el:
+       experiential_learning_marks =  st.number_input("Enter your experiential learning marks: ")
+       if experiential_learning_marks > 20:
+           st.write("Enter correct marks")
+    else:
+        experiential_learning_marks = 18
     st.write("For", sub)
     cie_1 = int(st.number_input("Enter the 1st internal marks: "))
     quiz_1 = st.number_input("Enter the 1st Quiz marks: ")
@@ -141,7 +148,7 @@ def app():
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
             st.write("Total Quiz marks in", sub, "is: ", quiz_total)
-            total_marks = quiz_total + cie_avg + 18 + lab_internals_final
+            total_marks = quiz_total + cie_avg + experiential_learning_marks + lab_internals_final
             total_marks_final = 0.666666666667*total_marks
             if total_marks_final > 90:
                 grades = 'S'
