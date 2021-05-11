@@ -150,8 +150,6 @@ def cgpa():
             logo_cong = im.open("congo.png")
             st.image(logo_cong)
             st.write("Congratulations You have passed in ", sub)
-            st.write("Total Average Internal Marks : ", cie_avg)
-            st.write("Total Quiz marks in", sub, "is: ", quiz_total)
             total_marks = quiz_total + cie_avg + experiential_learning_marks + lab_internals
             total_marks_final = (2*total_marks)//3
             if total_marks_final > 90:
