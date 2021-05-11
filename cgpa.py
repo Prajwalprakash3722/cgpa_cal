@@ -162,6 +162,7 @@ def cgpa():
             st.header("Report")
             st.write("Cycle: ", cycle)
             st.write("Branch: ", branch)
+            st.write("Semester: ",sem)
             st.write("Sub: ", sub)
             st.write("Total CIE average: ", cie_avg)
             st.write("Total Quiz: ", quiz_total)
