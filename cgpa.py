@@ -149,7 +149,6 @@ def cgpa():
         if cie_1 and cie_2 and cie_3 > 21:
             logo_cong = im.open("congo.png")
             st.image(logo_cong)
-            st.write("Congratulations You have passed in ", sub)
             total_marks = quiz_total + cie_avg + experiential_learning_marks + lab_internals
             total_marks_final = (2*total_marks)//3
             if total_marks_final > 90:
@@ -160,9 +159,9 @@ def cgpa():
                 grades = 'B'
             elif total_marks_final > 60 or total_marks < 70:
                 grades = 'C'
-            st.write("You have been awarded '", grades,
-                     "' Grades in internals", ", Total marks: ", total_marks_final)
             st.header("Report")
+            st.write("Cycle: ", cycle)
+            st.write("Branch: ", branch)
             st.write("Sub: ", sub)
             st.write("Total CIE average: ", cie_avg)
             st.write("Total Quiz: ", quiz_total)
