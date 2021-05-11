@@ -147,11 +147,12 @@ def cgpa():
         cie_avg = int((cie_1 + cie_2 + cie_3) / 3.0)
         quiz_total = quiz_1 + quiz_2 + quiz_3
         if cie_1 and cie_2 and cie_3 > 21:
+            logo_cong = im.open("congo.png")
+            st.image(logo_cong)
             st.write("Congratulations You have passed in ", sub)
             st.write("Total Average Internal Marks : ", cie_avg)
             st.write("Total Quiz marks in", sub, "is: ", quiz_total)
             total_marks = quiz_total + cie_avg + experiential_learning_marks + lab_internals
-            print(cie_avg, quiz_total, experiential_learning_marks, lab_internals)
             total_marks_final = (2*total_marks)//3
             if total_marks_final > 90:
                 grades = 'S'
