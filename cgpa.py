@@ -9,7 +9,7 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image as im
-
+import streamlit.components.v1 as components
 
 def app():
     logo = im.open("rvce.png")
@@ -162,7 +162,7 @@ def cgpa():
             st.header("Report")
             st.write("Cycle: ", cycle)
             st.write("Branch: ", branch)
-            st.write("Semester: ",sem)
+            st.write("Semester: ", sem)
             st.write("Sub: ", sub)
             st.write("Total CIE average: ", cie_avg)
             st.write("Total Quiz: ", quiz_total)
@@ -174,6 +174,8 @@ def cgpa():
     st.markdown(
         """Developed by <a href="https://prajwalprakash3722.github.io/prajwalsportfolio/">_introverted_coder_</a>""", unsafe_allow_html=True,)
 
-
+    st.markdown(
+        "Any Issues, Just tweet it and mention me, I'll try my best to address them")
+    components.html("""<a href="https://twitter.com/intent/tweet?screen_name=prakash_prajwal&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-lang="en" data-show-count="false">Tweet to @prakash_prajwal</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>""")
 app()
 cgpa()
